@@ -1,6 +1,9 @@
 {
     "name": "07-REST-SERVER",
     "version": "1.0.0",
+    "engines": {
+        "node": "10.9.0"
+    },
     "description": "",
     "main": "index.js",
     "scripts": {
