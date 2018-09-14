@@ -11,13 +11,10 @@ app.use(bodyParser.urlencoded({ extended: false }))
 // parse application/json
 app.use(bodyParser.json())
 
+const { VerificaToken, Verifica_Role } = require('../middlewares/autenticacion')
 
+app.get('/usuario', VerificaToken, (req, res) => {
 
-
-
-
-
-app.get('/usuario', function(req, res) {
     let desde = req.query.desde || 0;
     desde = Number(desde);
 
@@ -55,7 +52,7 @@ app.get('/usuario', function(req, res) {
         })
 })
 
-app.post('/usuario', function(req, res) {
+app.post('/usuario', [VerificaToken, Verifica_Role], (req, res) => {
     let body = req.body;
 
     let usuario = new Usuario({
@@ -83,7 +80,7 @@ app.post('/usuario', function(req, res) {
     })
 })
 
-app.put('/usuario/:id', function(req, res) {
+app.put('/usuario/:id', [VerificaToken, Verifica_Role], (req, res) => {
     let id = req.params.id;
     let body = _.pick(req.body, ['nombre', 'email', 'img', 'role', 'estado']);
 
@@ -102,7 +99,7 @@ app.put('/usuario/:id', function(req, res) {
     })
 })
 
-app.delete('/usuario/:id', function(req, res) {
+app.delete('/usuario/:id', [VerificaToken, Verifica_Role], (req, res) => {
     let id = req.params.id;
     let body = req.body;
 
