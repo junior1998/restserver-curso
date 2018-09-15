@@ -26,8 +26,6 @@ process.env.SEED = process.env.SEED || 'este-es-el-seed-desarrollo';
 // base de datos
 // ========================
 
-
-
 let urlDB;
 
 if (process.env.NODE_ENV === 'dev') {
@@ -37,3 +35,9 @@ if (process.env.NODE_ENV === 'dev') {
 }
 
 process.env.URLDB = urlDB;
+
+// ========================
+// Google Client ID
+// ========================
+
+process.env.CLIENT_ID = process.env.CLIENT_ID || '32210099089-0m7om5f5veddkpj5nibv7vnoi6dlbfok.apps.googleusercontent.com'
